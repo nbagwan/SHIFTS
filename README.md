@@ -56,9 +56,20 @@ file name	| explaintions
 ### Information and columns in output file
 
 Thr final output file contains 39 columns including all possible information from every step in SHIFTS, belonging to every scan
-Some important column are
-1. In case where -i in parameter was set as 0
-	1. scan
-	1. mass
-	1. delam ass
-1. In case 
+Some important column which were added on top of cometPTM output in SHIFTS are
+
+1. If -i in input parameter is set to 0
+	1. CorXcor: This is score SHIFTS uses, which is based on Xcorr from cometPTM. takes in account the charge and average mass of amino acid. Input parameter -X uses this score
+	1. median: This is median value in m/Z which reflects the machine error and is used for mass calibration
+	1. "Calibrated DeltaMH",	"Calibrated Delta MZ",	"Calibrated EXP MZ": contains calibrated values
+	1. SlopeFDR: contains the local FDR value
+	1. TagsforPTM-Orphans: tag for PSMs as Orphan or NA for PTM or Non orphan Peak apex
+	1. FinalSeq_Mass: contains the sequence provided with cometPTM, with one change that mass in sequence is now peak apex
+
+1. If -i in input parameter is set to 1, these column will be additional
+	1. Corr_Seq-mass: sequence with peak apex, after isotopic correction
+	1. Corr_mass: just the delta mass, after isotopic correction
+	1.Monoisotop_T/F: this column is indicated if isotopic correction was done for a scan(Yes/No)
+	
+
+
