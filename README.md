@@ -22,7 +22,7 @@ There are 8 input parameters for SHIFTS
 
 commond line input	| explaintions
 --------------------| ------------
--P, --Path2master   | Input will be a text file, containing two columns: first would be master path and second as subpath.this parameter will help to 
-analyze multiple experiment of a project together, i.e Project name = PTM , 
-experiments in project PTM; heart, liver. So, path/PTM will be masterPath and heart and liver will be subpath
-					
+-P, --Path2master   | Input will be a text file, containing two columns: first would be master path and second as subpath.this parameter will help to analyze multiple experiment of a project together, i.e Project name = PTM , experiments in project PTM; heart, liver. So, path/PTM will be masterPath and heart and liver will be subpath
+-B, --BinSize       | Bin size for slope modelling, the most standard bin to use is 0.001 which has been tested for several experiments, however you are free to choose depending on your machine resolution. Lower the resolution bigger the bin
+-X, --Xcor			| Corrected Xcorr threshold for choosing the best non-modified peptides, based on provided Xcorr, mass calibration will be performed. In most cases 0.20 or 0.25 would be good enough
+-F, --Fastafile		| path to Protein database which was used for searches (Concatenated) 
