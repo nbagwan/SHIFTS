@@ -31,3 +31,20 @@ commond line input	| explaintions
 -f, ----FDRthreshold| FDR filtration threshold. Example: 0.01 0r 0.05
 -O, --OutPutname	| output folder name, specified name will be created in every experiment folder with all the results file
 -i, --isotopeCorrection| it´s True/false condition for isotopic correction. 0 for false and 1 for true. A simple isotopic correction to minimize misassignations of the correct monoisotopic peak of the precursor. When two PSM having the same sequence are encountered having a ?Mass difference within 1 ppm of the mass difference expected for either one or two 13C or one 34S, the ?Mass of the heaviest precursor is substituted by that of the lighest one
+
+
+example to commond line. 
+**SHIFTS.exe –P Path:\masterTable.txt -B 0.001 -X 0.22 -F Path:\gencode25.TargetDcoyConcat.fasta  -A 0 -f 0.01 -O SHIFTS-output -i 0**
+
+### Output files
+file name	| explaintions
+------------| ------------
+"experimentName_TargetData_Calibration.txt" | This is the first file to be created by SHIFTS, will contain all the fraction from a experiment with the calibration error per fraction with recalibrated masses. from here to the final results this file will be used
+"GlobalFDR.txt"| This file will contain the global FDR Xcorr threshold for specified FDR in input parameter "-f"
+"sigmaCalculations.txt"| This file will contain the fitting value for sigma
+"heart_Median_log.txt"| This file contain all the calibration error value, and number of PSM/Fraction from which error has been calculated
+"target_Peak_identification_histogram.txt"| This file contains a histogram and guassian derivatives for all the delta masses, which are used for peak apex picking
+"Decoy_Peak_identification_histogram.txt"| This file contains a histogram fro decoys
+"SlopeFDRfile.txt"|This file contains all the data, like the calibration file, but with Local FDR calculated with every 1 Da
+"Peak_and_Slope_FDRfile.txt"|This file contains all the data, like the SlopeFDr file, but with Peak FDR calculated with every peak apex
+"NotassignedSequences.txt"|
