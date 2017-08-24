@@ -1,7 +1,7 @@
-**Systematic, Hypothesis-free Identification of PTMs with controlled FDR based on ultra-Tolerant database search (SHIFTS)**
-**Manual, build (20170823.0)**
+#**Systematic, Hypothesis-free Identification of PTMs with controlled FDR based on ultra-Tolerant database search (SHIFTS)**
+#**Manual, build (20170823.0)**
 
-## Introduction
+### Introduction
 
 **SHIFTS** is a program made in the Jesus Vazquez Cardiovascular Proteomics Lab at Centro Nacional de Investigaciones Cardiovasculares (CNIC), for high throughput PTM (Post translation modifications) processing. SHIFTS identifies peaks in the ?Mass distribution, assigns PSM to peaks and calculates FDR for peptide identification. SHIFTS is developed in python programming language as command line tool and its works with cometPTM produced “.txt” files.
 
