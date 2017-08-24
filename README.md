@@ -33,8 +33,10 @@ commond line input	| explaintions
 -i, --isotopeCorrection	| it´s True/false condition for isotopic correction. 0 for false and 1 for true. A simple isotopic correction to minimize misassignations of the correct monoisotopic peak of the precursor. When two PSM having the same sequence are encountered having a ?Mass difference within 1 ppm of the mass difference expected for either one or two 13C or one 34S, the ?Mass of the heaviest precursor is substituted by that of the lighest one
 
 
-example to commond line. \n
+example to commond line.
+
 **SHIFTS.exe –P Path:\masterTable.txt -B 0.001 -X 0.22 -F Path:\gencode25.TargetDcoyConcat.fasta  -A 0 -f 0.01 -O SHIFTS-output -i 0**
+
 
 ### Output files
 file name	| explaintions
@@ -50,3 +52,13 @@ file name	| explaintions
 "NotassignedSequences.txt"| This file contains some duplicated (for computing convenience) information whcih will be found in final file
 "AllWithSequence-massTag.txt"| This file contains all the data with FDR filtration and PSM to peak apex tagging.(PSM to Peak assignement). this will be a final File in case of where -i from parater defined as 0
 "IsotopCorrection_TargetData_withSequence-massTag.txt"| Will be the final file in case of where -i is defined as 1. contains all the PSMs after FDR filter and with Isopic corrections
+
+### Information and columns in output file
+
+Thr final output file contains 39 columns including all possible information from every step in SHIFTS, belonging to every scan
+Some important column are
+1. In case where -i in parameter was set as 0
+	1. scan
+	1. mass
+	1. delam ass
+1. In case 
