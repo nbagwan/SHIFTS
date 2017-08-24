@@ -1,5 +1,5 @@
-#**Systematic, Hypothesis-free Identification of PTMs with controlled FDR based on ultra-Tolerant database search (SHIFTS)**
-#**Manual, build (20170823.0)**
+# **Systematic, Hypothesis-free Identification of PTMs with controlled FDR based on ultra-Tolerant database search (SHIFTS)**
+# **Manual, build (20170823.0)**
 
 ### Introduction
 
