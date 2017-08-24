@@ -33,7 +33,7 @@ commond line input	| explaintions
 -i, --isotopeCorrection	| it´s True/false condition for isotopic correction. 0 for false and 1 for true. A simple isotopic correction to minimize misassignations of the correct monoisotopic peak of the precursor. When two PSM having the same sequence are encountered having a ?Mass difference within 1 ppm of the mass difference expected for either one or two 13C or one 34S, the ?Mass of the heaviest precursor is substituted by that of the lighest one
 
 
-example to commond line. 
+example to commond line. \n
 **SHIFTS.exe –P Path:\masterTable.txt -B 0.001 -X 0.22 -F Path:\gencode25.TargetDcoyConcat.fasta  -A 0 -f 0.01 -O SHIFTS-output -i 0**
 
 ### Output files
