@@ -69,7 +69,13 @@ Some important column which were added on top of cometPTM output in SHIFTS are
 1. If -i in input parameter is set to 1, these column will be additional
 	1. Corr_Seq-mass: sequence with peak apex, after isotopic correction
 	1. Corr_mass: just the delta mass, after isotopic correction
-	1.Monoisotop_T/F: this column is indicated if isotopic correction was done for a scan(Yes/No)
+	1. Monoisotop_T/F: this column is indicated if isotopic correction was done for a scan(Yes/No)
 	
-
+### Example data set
+[EXAMPLE can be foud here](https://github.com/CNIC-Proteomics/SHIFTS/EXAMPLE)
+	
+1. Download folder "Project-mito", which contains the two experiment "Heart" and "Liver". 
+1. Download the MasterFile.txt as well and change "path" in masterPath column path/Project-mito and subpath column path/Heart.
+1. Download the SHIFTS executable folder and on command line, change directory to "dist"
+1. Run program as explained above.
 
