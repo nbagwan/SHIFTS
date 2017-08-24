@@ -22,5 +22,7 @@ There are 8 input parameters for SHIFTS
 
 commond line input	| explaintions
 --------------------| ------------
--P, --Path2master   | Input will be a text file, containing two columns: first would be master path and second as subpath.this parameter will help to analyze multiple experiment of a project together, i.e Project name = PTM , experiments in project PTM; heart, liver. So, path/PTM will be masterPath and heart and liver will be subpath
+-P, --Path2master   | Input will be a text file, containing two columns: first would be master path and second as subpath.this parameter will help to 
+analyze multiple experiment of a project together, i.e Project name = PTM , 
+experiments in project PTM; heart, liver. So, path/PTM will be masterPath and heart and liver will be subpath
 					
