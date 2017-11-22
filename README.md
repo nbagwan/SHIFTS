@@ -5,7 +5,7 @@
 
 **SHIFTS** is a program made in the Jesus Vazquez Cardiovascular Proteomics Lab at Centro Nacional de Investigaciones Cardiovasculares (CNIC), for high throughput PTM (Post translation modifications) processing
 SHIFTS identifies peaks in the Delta Mass distribution, assigns PSM to peaks and calculates FDR for peptide identification. 
-SHIFTS is developed in python programming language as command line tool and its works with cometPTM produced ì.txtî files.
+SHIFTS is developed in python programming language as command line tool and its works with cometPTM produced ‚Äú.txt‚Äù files.
 
 ### Availability
 
@@ -16,12 +16,12 @@ SHIFTS.exe -h
 
 ### Parameters
 
-Usage: -P -B -X -F -A -f -O ñi
-Use ñh or --help for detailed help for parameter
+Usage: -P -B -X -F -A -f -O ‚Äìi
+Use ‚Äìh or --help for detailed help for parameter
 
 There are 8 input parameters for SHIFTS
 
-commond line input	| explaintions
+commond line input	| description
 --------------------| ------------
 -P, --Path2master	| Input will be a text file, containing two columns: first would be master path and second as subpath.this parameter will help to analyze multiple experiment of a project together, i.e Project name = PTM , experiments in project PTM; heart, liver. So, path/PTM will be masterPath and heart and liver will be subpath
 -B, --BinSize	| Bin size for slope modelling, the most standard bin to use is 0.001 which has been tested for several experiments, however you are free to choose depending on your machine resolution. Lower the resolution bigger the bin
@@ -30,16 +30,16 @@ commond line input	| explaintions
 -A, --ApexFilter	| Apex threshold, a simple integer input (example 10 0r 15 0r 8) for ignoring the PTM peaks which have less PSMs than specified number. It will help to avoid the background noise. However in cases of small experiments using 0 would be useful, as some good PTMs will be very low frequent
 -f, --FDRthreshold	| FDR filtration threshold. Example: 0.01 0r 0.05
 -O, --OutPutname	| output folder name, specified name will be created in every experiment folder with all the results file
--i, --isotopeCorrection	| it¥s True/false condition for isotopic correction. 0 for false and 1 for true. A simple isotopic correction to minimize misassignations of the correct monoisotopic peak of the precursor. When two PSM having the same sequence are encountered having a ?Mass difference within 1 ppm of the mass difference expected for either one or two 13C or one 34S, the ?Mass of the heaviest precursor is substituted by that of the lighest one
+-i, --isotopeCorrection	| it¬¥s True/false condition for isotopic correction. 0 for false and 1 for true. A simple isotopic correction to minimize misassignations of the correct monoisotopic peak of the precursor. When two PSM having the same sequence are encountered having a ?Mass difference within 1 ppm of the mass difference expected for either one or two 13C or one 34S, the ?Mass of the heaviest precursor is substituted by that of the lighest one
 
 
 example to commond line.
 
-**SHIFTS.exe ñP Path:\masterTable.txt -B 0.001 -X 0.22 -F Path:\gencode25.TargetDcoyConcat.fasta  -A 0 -f 0.01 -O SHIFTS-output -i 0**
+**SHIFTS.exe ‚ÄìP Path:\masterTable.txt -B 0.001 -X 0.22 -F Path:\gencode25.TargetDcoyConcat.fasta  -A 0 -f 0.01 -O SHIFTS-output -i 0**
 
 
 ### Output files
-file name	| explaintions
+file name	| description
 ------------| ------------
 "experimentName_TargetData_Calibration.txt" | This is the first file to be created by SHIFTS, will contain all the fraction from a experiment with the calibration error per fraction with recalibrated masses. from here to the final results this file will be used
 "GlobalFDR.txt"| This file will contain the global FDR Xcorr threshold for specified FDR in input parameter "-f"
