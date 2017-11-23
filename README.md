@@ -9,7 +9,7 @@ SHIFTS is developed in python programming language as command line tool and its 
 
 ### Availability
 
-[SHIFTS is available at](https://github.com/nbagwan/SHIFTS.git)
+[SHIFTS is available at](https://github.com/CNIC-Proteomica/SHIFTS.git)
 Download the program folder in local to use, in program folder there are two sub folders; Dist and Build. The executable for SHIFTS is available in Dist folder. From here tool can be accessed, and for detailed help for parameter type
 
 SHIFTS.exe -h
@@ -74,7 +74,7 @@ Some important column which were added on top of cometPTM output in SHIFTS are
 ### Example data set
 [EXAMPLE can be foud here](https://github.com/CNIC-Proteomics/SHIFTS/EXAMPLE)
 	
-1. Download folder "Project-mito", which contains the two experiment "Heart" and "Liver". 
+1. Download folder "exampleData.rar" and extract, which contains the two experiment "Heart" and "Liver". 
 1. Download the MasterFile.txt as well and change "path" in masterPath column path/Project-mito and subpath column path/Heart.
 1. Download the SHIFTS executable folder and on command line, change directory to "dist"
 1. Run program as explained above.
