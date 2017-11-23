@@ -9,7 +9,7 @@ SHIFTS is developed in python programming language as command line tool and its 
 
 ### Availability
 
-[SHIFTS is available at](https://github.com/CNIC-Proteomica/SHIFTS)
+[SHIFTS is available at](SHIFTS_executable)
 Download the program folder in local to use, in program folder there are two sub folders; Dist and Build. The executable for SHIFTS is available in Dist folder. From here tool can be accessed, and for detailed help for parameter type
 
 SHIFTS.exe -h
