@@ -72,7 +72,7 @@ Some important column which were added on top of cometPTM output in SHIFTS are
 	1. Monoisotop_T/F: this column is indicated if isotopic correction was done for a scan(Yes/No)
 	
 ### Example data set
-[EXAMPLE can be foud here](https://github.com/CNIC-Proteomics/SHIFTS/EXAMPLE)
+[EXAMPLE can be foud here](EXAMPLE)
 	
 1. Download folder "exampleData.rar" and extract, which contains the two experiment "Heart" and "Liver". 
 1. Download the MasterFile.txt as well and change "path" in masterPath column path/Project-mito and subpath column path/Heart.
