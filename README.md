@@ -36,7 +36,7 @@ commond line input	| description
 
 example to commond line.
 
-**SHIFTS.exe –P Path:\masterTable.txt -B 0.001 -X 0.22 -F Path:\gencode25.TargetDcoyConcat.fasta  -A 0 -f 0.01 -O SHIFTS-output -i 0**
+**SHIFTS.exe –P Path:\masterTable.txt -B 0.001 -X 0.22 -F Path:\gencode25.TargetDcoyConcat.fasta  -A 0 -f 0.01 -l 0.01 -p 0.01 -O SHIFTS-output -i 0**
 
 
 ### Output files
