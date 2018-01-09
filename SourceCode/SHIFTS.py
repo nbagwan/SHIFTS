@@ -43,6 +43,10 @@ parser.add_option("-O", "--OutPutname", action="store", type="string", dest="Out
 
 parser.add_option("-i", "--isotopeCorrection", action="store", type="string", dest="isotop", help="Enter 1 if you want to use isotopcorrection else 0")
 
+parser.add_option("-l", "--LocalFDRthrsld", action="store", type="string", dest="localFDRs", help="Enter the local FDR threshold; 0.01 for 1% FDR")
+
+parser.add_option("-p", "--peakFDRthrsld", action="store", type="string", dest="peakFDRs", help="Enter the peak FDR threshold; 0.01 for 1% FDR")
+
 
 (options, args) = parser.parse_args()
 
@@ -76,7 +80,7 @@ else:
 if options.FDRs:
     FDRs = options.FDRs
 else:
-    parser.error("please enter FDR you want to use; 0.01 for 1% FDR")
+    parser.error("please enter global-FDR you want to use; 0.01 for 1% FDR")
 
 if options.Outname:
     Outname = options.Outname
@@ -88,13 +92,22 @@ if options.isotop:
 else:
     parser.error("Please enter 0 for no, and 1 for yes")
 
+if options.localFDRs:
+    localFDRs = options.localFDRs
+else:
+    parser.error("Please enter local-FDR you want to use; 0.01 for 1% FDR")
+
+if options.peakFDRs:
+    peakFDRs = options.peakFDRs
+else:
+    parser.error("Please enter peak-FDR you want to use; 0.01 for 1% FDR")
 
 separations = "/"
 
 ### "calibrate_every_path" is the main method where all the methods will be called as a forkflow for different calculation and processing ###
 ### under this method all other mwthod scripts will be called, such as "Comet_PTM_processingScript" for calibration. ###
 
-def calibrate_every_path(pathTomasterFIle, bins, Xcorthershold, outputfolder, fasta, apexthersold, fdrFilter, isotopTF ):
+def calibrate_every_path(pathTomasterFIle, bins, Xcorthershold, outputfolder, fasta, apexthersold, fdrFilter, isotopTF, localFDRfilter, peakFDRfilter ):
 
     ##### the first method "Comet_PTM_processingScript.ProcessingFile" takes all the raw comet output from master file and calculates a machine error and creates an output folder###
     #### for more details check the method Comet_PTM_processingScript.py#####
@@ -156,7 +169,7 @@ def calibrate_every_path(pathTomasterFIle, bins, Xcorthershold, outputfolder, fa
 
 
         TaggingScript.taggingMethodForCOMET_PTM([apexfile_T, apexfile_D], calibrationfile, filepath,
-                                                fasta=fastaFile, slopefdrFile=peakfile, globalfdrfile=globalFDRfile, sigmafile=madfiles, fdrTOuse=FDRs)
+                                                fasta=fastaFile, slopefdrFile=peakfile, globalfdrfile=globalFDRfile, sigmafile=madfiles, fdrTOuse=FDRs, localFDRs=localFDRfilter, peakFDRs=peakFDRfilter)
 
 
 
@@ -169,7 +182,7 @@ def calibrate_every_path(pathTomasterFIle, bins, Xcorthershold, outputfolder, fa
 
 
 if __name__ == "__main__":
-    calibrate_every_path(pathTomasterFIle=Dir, Xcorthershold=CorrXcor, outputfolder=Outname, bins=binSize, fasta=fastafile, apexthersold=apex, fdrFilter=FDRs, isotopTF=isotop)
+    calibrate_every_path(pathTomasterFIle=Dir, Xcorthershold=CorrXcor, outputfolder=Outname, bins=binSize, fasta=fastafile, apexthersold=apex, fdrFilter=FDRs, isotopTF=isotop, localFDRfilter=localFDRs, peakFDRfilter=peakFDRs)
 
 print("---%s seconds ---" % (time.time() - start_time))
     #

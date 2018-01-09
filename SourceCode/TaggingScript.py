@@ -60,7 +60,7 @@ def MassTagging2Seq_T(histogramFile, apex_thershold, target):
 
 ######################################################### CometPTM #################################################
 
-def taggingMethodForCOMET_PTM(apexfileNameList, calibrationFile, folder, fasta, slopefdrFile, globalfdrfile, sigmafile, fdrTOuse):
+def taggingMethodForCOMET_PTM(apexfileNameList, calibrationFile, folder, fasta, slopefdrFile, globalfdrfile, sigmafile, fdrTOuse, localFDRs, peakFDRs):
 
     outputlsit1 = []
     outputlist2 = [
@@ -117,17 +117,19 @@ def taggingMethodForCOMET_PTM(apexfileNameList, calibrationFile, folder, fasta, 
                 fnn_sc_chDic_seq = fnn + ".raw" + "_" + sc + "_" + ch + "_" + seq
                 # if fnn_sc_ch not in fnn_sc_chDic:
                 #     fnn_sc_chDic[fnn_sc_ch] = slopePeak + "\t" + fdr + "\t" + st + "\t" + ed + "\t" + st_end + "\t" + xc + "\t" + peakFDR
-                if fnn_sc_chDic_seq not in fnn_sc_chDic:
-                    fnn_sc_chDic[
-                        fnn_sc_chDic_seq] = slopePeak + "\t" + fdr + "\t" + st + "\t" + ed + "\t" + st_end + "\t" + xc + "\t" + peakFDR
 
-                if float(fdr) < float(fdrTOuse):
+###################### local fdr check ###########################################################################################################
+                if fnn_sc_chDic_seq not in fnn_sc_chDic:
+                    fnn_sc_chDic[fnn_sc_chDic_seq] = slopePeak + "\t" + fdr + "\t" + st + "\t" + ed + "\t" + st_end + "\t" + xc + "\t" + peakFDR
+
+                if float(fdr) < float(localFDRs):
+                #if float(fdr) < float(fdrTOuse):
                     if st_end not in XcorthersholdDic:
                         XcorthersholdDic[st_end] = [float(xc)]
                     else:
                         XcorthersholdDic[st_end].append(float(xc))
 
-    ########################################################cheching Xcor thershold for every 1 da range in mass distibution #####################
+    ########################################################cheching global FDR Xcor thershold for every 1 da range in mass distibution #####################
     for values in XcorthersholdDic:
         PTMxcorthershold = min(XcorthersholdDic[values])
         test1 = XcorthersholdDic[values]
@@ -181,8 +183,6 @@ def taggingMethodForCOMET_PTM(apexfileNameList, calibrationFile, folder, fasta, 
                     else:
                         listname = decoyApexList
 
-
-
                     quantification = "NA"
 
                     if "DECOY_" not in proteinlist and "INV" not in proteinlist:
@@ -208,7 +208,8 @@ def taggingMethodForCOMET_PTM(apexfileNameList, calibrationFile, folder, fasta, 
                                 start_end = fnn_sc_chDic[fn_scan5_charge_seq2Use].split("\t")[4]
                                 fdrvalueforPSM = fnn_sc_chDic[fn_scan5_charge_seq2Use].split("\t")[1]
                                 fdrvalueforPEAK = fnn_sc_chDic[fn_scan5_charge_seq2Use].split("\t")[6]
-                                if start_end.strip() in XcorthersholdDicWithValue and float(fdrvalueforPSM) < float(fdrTOuse): #### chaeck for local FDR at 1 da
+
+                                if start_end.strip() in XcorthersholdDicWithValue and float(fdrvalueforPSM) < float(localFDRs): #### chaeck for local FDR at 1 da
                                     if xcor >= float(XcorthersholdDicWithValue[start_end][0]): #####check for global FDR
                                         thrs = XcorthersholdDicWithValue[start_end][0]
                                         thrs1 = XcorthersholdDicWithValue[start_end][1]
@@ -239,7 +240,7 @@ def taggingMethodForCOMET_PTM(apexfileNameList, calibrationFile, folder, fasta, 
                                              "\t", Error, "\t", classname, "\t", str(close), "\t", tagOF_PTM_Orphans,"\t",finalSeqMassTag,
                                              "\n"])
 
-                                elif start_end.strip() in XcorthersholdDicWithValue and float(fdrvalueforPSM) > float(fdrTOuse) and float(fdrvalueforPEAK) < float(fdrTOuse): ### check for peak FDR
+                                elif start_end.strip() in XcorthersholdDicWithValue and float(fdrvalueforPSM) > float(fdrTOuse) and float(fdrvalueforPEAK) < float(peakFDRs): ### check for peak FDR
 
                                     if xcor >= float(XcorthersholdDicWithValue[start_end][1]): #####check for global FDR
 
@@ -283,7 +284,7 @@ def taggingMethodForCOMET_PTM(apexfileNameList, calibrationFile, folder, fasta, 
                                 start_end = fnn_sc_chDic[fn_scan5_charge_seq2Use].split("\t")[4]
                                 fdrvalueforPSM = fnn_sc_chDic[fn_scan5_charge_seq2Use].split("\t")[1]
                                 fdrvalueforPEAK = fnn_sc_chDic[fn_scan5_charge_seq2Use].split("\t")[6]
-                                if start_end.strip() in XcorthersholdDicWithValue and float(fdrvalueforPSM) < float(fdrTOuse): #or float(fdrvalueforPEAK) < 0.01:
+                                if start_end.strip() in XcorthersholdDicWithValue and float(fdrvalueforPSM) < float(localFDRs): #or float(fdrvalueforPEAK) < 0.01:
                                     if xcor >= float(XcorthersholdDicWithValue[start_end][0]):
                                         thrs = XcorthersholdDicWithValue[start_end][0]
                                         thrs1 = XcorthersholdDicWithValue[start_end][1]
@@ -299,7 +300,7 @@ def taggingMethodForCOMET_PTM(apexfileNameList, calibrationFile, folder, fasta, 
                                              fnn_sc_chDic[fn_scan5_charge_seq2Use].split("\t")[0], "\t", quantification.strip(),
                                              "\n"])
 
-                                elif start_end.strip() in XcorthersholdDicWithValue and float(fdrvalueforPSM) > float(fdrTOuse) and float(fdrvalueforPEAK) < float(fdrTOuse):
+                                elif start_end.strip() in XcorthersholdDicWithValue and float(fdrvalueforPSM) > float(fdrTOuse) and float(fdrvalueforPEAK) < float(peakFDRs):
                                     if xcor >= float(XcorthersholdDicWithValue[start_end][1]):
                                         thrs = XcorthersholdDicWithValue[start_end][0]
                                         thrs1 = XcorthersholdDicWithValue[start_end][1]
